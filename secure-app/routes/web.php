@@ -38,7 +38,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-   // Administration Panel
+    // Administration Panel
     Route::prefix('admin')->name('admin.')->group(function () {
 
         // User management
@@ -48,7 +48,7 @@ Route::middleware('auth')->group(function () {
         Route::put('/users/{user}/update-permissions', [UserController::class, 'updatePermissions'])->name('users.update-permissions');
         Route::get('/users/{user}', [UserController::class, 'show'])->name('users.show');
 
-       // Folder management
+        // Folder management
         Route::resource('/folders', FolderController::class)->except(['show']);
         Route::get('/folders/{folder}', [FolderController::class, 'show'])->name('folders.show');
         Route::get('/folders/edit-folder/{folder}', [FolderController::class, 'editFolder'])->name('folders.edit-folder');
@@ -84,5 +84,9 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/phpinfo', function () {
         phpinfo();
+    });
+
+    Route::get('/healthz', function () {
+        return response()->json(['status' => 'ok']);
     });
 });
