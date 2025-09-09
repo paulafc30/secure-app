@@ -12,14 +12,17 @@ return new class extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('profile_image_path')->nullable()->after('email');
+            // Añadir una comprobación para evitar errores de "Nombre de columna duplicado"
+            if (!Schema::hasColumn('users', 'profile_image_path')) {
+                $table->string('profile_image_path')->nullable()->after('email');
+            }
         });
     }
 
     /**
      * Reverse the migrations.
      */
-        public function down()
+    public function down()
     {
         Schema::table('users', function (Blueprint $table) {
             $table->dropColumn('profile_image_path');

@@ -1,7 +1,7 @@
 # Base image con PHP
 FROM php:8.3-fpm
 
-# Instalar dependencias del sistema
+# Instalar dependencias del sistema y Node.js para Vite
 RUN apt-get update && apt-get install -y \
     libpng-dev \
     libonig-dev \
@@ -10,6 +10,8 @@ RUN apt-get update && apt-get install -y \
     unzip \
     git \
     curl \
+    nodejs \
+    npm \
     && rm -rf /var/lib/apt/lists/*
 
 # Extensiones de PHP necesarias
@@ -26,6 +28,10 @@ COPY . .
 
 # Instalar dependencias de Laravel
 RUN composer install --no-dev --optimize-autoloader
+
+# Instalar dependencias de Node.js y compilar assets de Vite
+RUN npm install
+RUN npm run build
 
 # Permisos para storage y bootstrap/cache
 RUN chown -R www-data:www-data storage bootstrap/cache
