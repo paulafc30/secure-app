@@ -31,4 +31,51 @@ Secure-App es un proyecto web fullstack desarrollado como práctica profesional.
 ```bash
 git clone https://github.com/paulafc30/secure-app.git
 cd secure-app
+```
 
+### Backend (Laravel / PHP)
+1. Instalar dependencias:
+```bash
+composer install
+```
+2. Copiar archivo de entorno:
+```bash
+cp .env.example .env
+```
+3. Configurar `.env` con tu base de datos MySQL.
+4. Generar clave de aplicación:
+```bash
+php artisan key:generate
+```
+5. Migrar la base de datos:
+```bash
+php artisan migrate
+```
+6. Iniciar servidor:
+```bash
+php artisan serve
+```
+Por defecto estará en `http://127.0.0.1:8000`.
+
+### Frontend (React / Tailwind)
+1. Entrar en la carpeta frontend (si aplica):
+```bash
+cd frontend
+```
+2. Instalar dependencias:
+```bash
+npm install
+```
+3. Iniciar servidor de desarrollo:
+```bash
+npm start
+```
+Por defecto estará en `http://localhost:3000`.
+
+## Estado del proyecto
+- ✅ Funcionalidad básica de usuarios, pisos y chat  
+- ⚠️ Algunas funcionalidades aún en desarrollo  
+- 💡 Próximamente: mejoras en UI y documentación completa
+
+## Contribuciones
+Si quieres colaborar, abre un issue o pull request. Cualquier sugerencia es bienvenida 😊
