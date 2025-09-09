@@ -12,9 +12,25 @@ export default defineConfig(({ mode }) => {
                 refresh: true,
             }),
         ],
-        // Exponer la variable al front-end
+        // Expone la variable de entorno APP_URL al front-end
         define: {
             'import.meta.env.VITE_APP_URL': JSON.stringify(env.APP_URL),
-        }
+        },
+        // Añade la configuración para que Vite sirva los archivos estáticos correctamente
+        build: {
+            // Especifica el directorio de salida para los archivos compilados
+            outDir: 'public/build',
+            // Deshabilita el manifiesto para evitar problemas con la ruta de los assets
+            manifest: false,
+            rollupOptions: {
+                output: {
+                    entryFileNames: 'assets/[name].js',
+                    chunkFileNames: 'assets/[name].js',
+                    assetFileNames: 'assets/[name].[ext]',
+                },
+            },
+        },
+        // Configura la base para que apunte a la ruta pública de los activos
+        base: env.APP_URL + '/',
     };
 });
