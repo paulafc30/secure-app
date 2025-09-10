@@ -14,13 +14,13 @@ return new class extends Migration
         Schema::create('permissions', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users')->onDelete('restrict');
-            $table->string('permission_type')->nullable();
+            $table->string('permission_type');
             $table->foreignId('folder_id')->constrained('folders')->onDelete('restrict');
             $table->timestamp('expires_at')->nullable();
-            $table->timestamps(); // Manteniendo las timestamps si las necesitas
-            $table->primary(['id', 'folder_id', 'user_id']);
-            $table->index(['user_id']);
-            $table->index(['folder_id']);
+            $table->timestamps();
+
+            // Asegura que solo un permiso de un tipo específico exista para un usuario y una carpeta.
+            $table->unique(['user_id', 'folder_id', 'permission_type']);
         });
     }
 
