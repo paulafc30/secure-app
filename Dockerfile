@@ -29,6 +29,14 @@ COPY . .
 # Instalar dependencias de Laravel
 RUN composer install --no-dev --optimize-autoloader
 
+# --- AÑADIDOS AQUÍ ---
+# Ejecutar las migraciones y seeders para preparar la base de datos
+RUN php artisan migrate --force
+RUN php artisan db:seed --force
+# Enlazar la carpeta de storage, una práctica común para subir archivos
+RUN php artisan storage:link
+# ---------------------
+
 # Instalar dependencias de Node.js y compilar assets de Vite
 RUN npm install
 RUN npm run build
