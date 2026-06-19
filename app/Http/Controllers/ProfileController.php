@@ -33,6 +33,8 @@ class ProfileController extends Controller
 
         if ($request->hasFile('profile_image')) {
             $this->updateProfileImage($request, $user);
+        } else {
+            $user->save();
         }
 
         return Redirect::route('profile.edit')->with('status', 'profile-updated');

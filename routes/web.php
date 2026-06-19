@@ -19,7 +19,7 @@ Route::post('/upload', [FileController::class, 'uploadStandalone'])->name('uploa
 Route::get('/files/{file}/download', [FileController::class, 'downloadFile'])->name('files.download');
 Route::get('/files', [FileController::class, 'showAllFilesView'])->name('files.view');
 Route::delete('/files/{filename}', [FileController::class, 'destroyStandalone'])->name('files.destroy.standalone');
-Route::get('/files/view/{file}', [FileController::class, 'viewFile'])->name('files.view');
+Route::get('/files/view/{file}', [FileController::class, 'viewFile'])->name('files.view-file');
 
 
 Route::get('/auth/google', [AuthController::class, 'redirectToGoogle'])->name('google.login');
@@ -72,7 +72,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/folders', [FolderController::class, 'index'])->name('folders.index');
         Route::get('/folders/{folder}', [FolderController::class, 'show'])->name('folders.show');
         Route::get('/folders/{folder}/files', [FileController::class, 'index'])->name('folders.files');
-        Route::delete('/files/{file}', [FileController::class, 'destroy'])->name('files.destroy');
+        Route::delete('/files/{file}', [FileController::class, 'destroyFile'])->name('files.destroy');
     });
 
     // Access and generation of temporary links

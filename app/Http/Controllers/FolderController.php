@@ -181,6 +181,11 @@ class FolderController extends Controller
      * @param  \App\Models\Folder  $folder
      * @return \Illuminate\Contracts\View\View
      */
+    public function editFolder(Folder $folder): View
+    {
+        return $this->edit($folder);
+    }
+
     public function edit(Folder $folder): View
     {
         $user = Auth::user();

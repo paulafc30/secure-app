@@ -21,7 +21,7 @@ class TemporaryLinkController extends Controller
      */
     public function createUpload()
     {
-        return view('admin.create-access-link');
+        return view('admin.create-upload');
     }
 
     /**
@@ -72,7 +72,7 @@ class TemporaryLinkController extends Controller
         $accessLink = route('login');
 
         Mail::to($request->email)->send(
-            new AccessLinkEmail($accessLink, $request->name, $temporaryLink, $userPassword, $temporaryUser) // Pasa la contraseña (generada si es necesario)
+            new AccessLinkEmail($accessLink, $request->name, $temporaryLink, $userPassword)
         );
 
         // Devolver una respuesta JSON para AJAX

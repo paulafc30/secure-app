@@ -19,6 +19,11 @@ use Illuminate\Support\Facades\Storage;
 class FileController extends Controller
 {
 
+    public function loadView(Request $request)
+    {
+        return $this->showAllFilesView($request);
+    }
+
     public function index(Folder $folder, Request $request): View
     {
         $user = Auth::user();

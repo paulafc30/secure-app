@@ -144,7 +144,7 @@
                         <li class="flex justify-between items-center py-2">
                             <span>{{ $file->name }}</span>
                             <div class="flex gap-2">
-                                <a href="{{ route('files.view', $file->id) }}" target="_blank" class="bg-[#0464FA] text-white px-2 py-1 rounded hover:bg-blue-600 text-xs">
+                                <a href="{{ route('files.view-file', $file->id) }}" target="_blank" class="bg-[#0464FA] text-white px-2 py-1 rounded hover:bg-blue-600 text-xs">
                                     <i class="bi bi-eye"></i>
                                 </a>
 
