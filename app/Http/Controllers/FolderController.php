@@ -273,8 +273,4 @@ class FolderController extends Controller
     public function deleteEmptyStorageFolder(int $folderId): void
     {
         $folderPathInStorage = 'uploads/' . $folderId;
-        if (Storage::disk('public')->exists($folderPathInStorage) && empty(Storage::disk('public')->files($folderPathInStorage))) {
-            Storage::disk('public')->deleteDirectory($folderPathInStorage);
-        }
-    }
-}
+        if (Storage::disk('public')->exists($folderPathInStorage) && empty(Storage::disk('public')->files($folderPathInStor
