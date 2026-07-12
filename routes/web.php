@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/run-migrations-now', function () {
     Artisan::call('migrate', ['--force' => true]);
     return '<pre>' . Artisan::output() . '</pre>';
-});
+})->withoutMiddleware([\Illuminate\Session\Middleware\StartSession::class]);
 
 Route::get('/', function () {
     return redirect()->route('dashboard');
