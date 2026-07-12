@@ -6,7 +6,14 @@ use App\Http\Controllers\FileController;
 use App\Http\Controllers\FolderController;
 use App\Http\Controllers\TemporaryLinkController;
 use App\Http\Controllers\AuthController;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
+
+// TEMPORAL: ejecutar migraciones en Vercel — ELIMINAR después
+Route::get('/run-migrations-now', function () {
+    Artisan::call('migrate', ['--force' => true]);
+    return '<pre>' . Artisan::output() . '</pre>';
+});
 
 Route::get('/', function () {
     return redirect()->route('dashboard');
