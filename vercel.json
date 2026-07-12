@@ -1,7 +1,7 @@
 {
   "version": 2,
   "framework": null,
-  "buildCommand": "mkdir -p .vercel-static",
+  "buildCommand": "mkdir -p .vercel-static && touch .vercel-static/.keep",
   "outputDirectory": ".vercel-static",
   "functions": {
     "api/index.php": {
