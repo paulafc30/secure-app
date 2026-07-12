@@ -25,7 +25,8 @@ $app = require_once __DIR__ . '/../bootstrap/app.php';
 
 // Usar el kernel de consola, no el HTTP — evita middleware de sesión
 $kernel = $app->make(Illuminate\Contracts\Console\Kernel::class);
-$kernel->call('migrate', ['--force' => true]);
+// migrate:fresh borra y recrea todas las tablas
+$kernel->call('migrate:fresh', ['--force' => true]);
 
 header('Content-Type: text/html; charset=utf-8');
 echo '<pre>' . htmlspecialchars($kernel->output()) . '</pre>';
