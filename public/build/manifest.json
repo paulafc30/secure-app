@@ -9,5 +9,17 @@
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true
+  },
+  "resources/js/files.js": {
+    "file": "assets/files-7EC_QTAz.js",
+    "name": "files",
+    "src": "resources/js/files.js",
+    "isEntry": true
+  },
+  "resources/js/folders.js": {
+    "file": "assets/folders-CtjKNGbJ.js",
+    "name": "folders",
+    "src": "resources/js/folders.js",
+    "isEntry": true
   }
 }
