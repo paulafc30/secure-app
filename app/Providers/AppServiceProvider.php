@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -21,6 +22,7 @@ class AppServiceProvider extends ServiceProvider
     {
         // Vercel serverless: filesystem de solo lectura excepto /tmp
         if (getenv('VERCEL')) {
+            URL::forceScheme('https');
             $dirs = [
                 '/tmp/storage/framework/views',
                 '/tmp/storage/framework/cache/data',
