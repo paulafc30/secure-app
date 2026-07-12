@@ -362,4 +362,8 @@ class FileController extends Controller
 
         $files = Storage::disk('public')->files($folderPath);
 
-        if
+        if (count($files) === 0) {
+            Storage::disk('public')->deleteDirectory($folderPath);
+        }
+    }
+}

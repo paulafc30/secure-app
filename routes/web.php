@@ -88,4 +88,5 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/healthz', function () {
         return response()->json(['status' => 'ok']);
-   
+    });
+});
