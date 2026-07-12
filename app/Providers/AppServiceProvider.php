@@ -20,7 +20,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         // Vercel serverless: filesystem de solo lectura excepto /tmp
-        if (isset($_SERVER['VERCEL'])) {
+        if (getenv('VERCEL')) {
             $dirs = [
                 '/tmp/storage/framework/views',
                 '/tmp/storage/framework/cache/data',
