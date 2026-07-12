@@ -1,6 +1,8 @@
 {
   "version": 2,
   "framework": null,
+  "buildCommand": "mkdir -p .vercel-static",
+  "outputDirectory": ".vercel-static",
   "functions": {
     "api/index.php": {
       "runtime": "vercel-php@0.7.2"
