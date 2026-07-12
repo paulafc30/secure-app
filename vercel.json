@@ -1,17 +1,17 @@
 {
   "version": 2,
   "framework": null,
-  "buildCommand": "mkdir -p .vercel-static && touch .vercel-static/.keep",
+  "buildCommand": "mkdir -p .vercel-static/build .vercel-static/images && cp -r public/build/. .vercel-static/build/ && (cp -r public/images/. .vercel-static/images/ 2>/dev/null || true) && (cp public/favicon.ico .vercel-static/ 2>/dev/null || true)",
   "outputDirectory": ".vercel-static",
   "functions": {
     "api/index.php": {
       "runtime": "vercel-php@0.7.2"
-    },
+    }
   },
   "routes": [
-    { "src": "/build/(.*)", "dest": "/public/build/$1" },
-    { "src": "/images/(.*)", "dest": "/public/images/$1" },
-    { "src": "/favicon.ico", "dest": "/public/favicon.ico" },
+    { "src": "/build/(.*)", "dest": "/build/$1" },
+    { "src": "/images/(.*)", "dest": "/images/$1" },
+    { "src": "/favicon.ico", "dest": "/favicon.ico" },
     { "src": "/(.*)", "dest": "/api/index.php" }
   ]
 }
