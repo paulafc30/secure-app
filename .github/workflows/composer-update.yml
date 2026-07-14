@@ -1,0 +1,26 @@
+name: Update Composer dependencies
+
+on:
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+
+      - name: Update vulnerable packages
+        run: composer update symfony/http-foundation psy/psysh --no-interaction
+
+      - name: Commit updated composer.lock
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add composer.lock
+          git diff --staged --quiet || git commit -m "fix: update composer dependencies for security"
+          git push
